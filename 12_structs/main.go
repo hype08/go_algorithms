@@ -7,11 +7,14 @@ import (
 
 // Person struct.
 type Person struct {
-	firstName string
-	lastName  string
-	gender    string
-	age       int
-	city      string
+	// firstName string
+	// lastName  string
+	// gender    string
+	// age       int
+	// city      string
+
+	firstName, lastName, gender, city string
+	age                               int
 }
 
 // Greeting (value receiver)
@@ -35,7 +38,7 @@ func (person *Person) getsMarried(newLastName string) {
 func main() {
 	// person1 := Person{firstName: "Henry", lastName: "Zhang", gender: "male", age: 30, city: "Tokyo"}
 
-	person1 := Person{"Henry", "Zhang", "f", 30, "Tokyo"}
+	person1 := Person{"Henry", "Zhang", "m", "Tokyo", 30}
 	fmt.Println(person1)
 	fmt.Println(person1.gender)
 	person1.age++
