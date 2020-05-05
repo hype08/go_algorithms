@@ -7,17 +7,20 @@ You cannot add a single integer to itself to obtain the target sum.
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	target := 10
 	array := []int{3, 5, -4, 8, 11, 1, -1, 6}
-	result := TwoNumberSum(array, target)
+	result := TwoNumberSum2(array, target)
 	fmt.Println(result)
 }
 
-// TwoNumberSum O(n^2) time | O(1) space.
-func TwoNumberSum(array []int, target int) []int {
+// TwoNumberSum1 O(n^2) time | O(1) space.
+func TwoNumberSum1(array []int, target int) []int {
 	for i := 0; i < len(array)-1; i++ {
 		firstNum := array[i]
 		for j := i + 1; j < len(array); j++ {
@@ -26,6 +29,23 @@ func TwoNumberSum(array []int, target int) []int {
 				return []int{firstNum, secondNum}
 			}
 		}
+	}
+	return []int{}
+}
+
+// TwoNumberSum2 O(nlog(n)) time | O(1) space.
+func TwoNumberSum2(array []int, target int) []int {
+	sort.Ints(array)
+	fmt.Println(array)
+	left, right := 0, len(array)-1
+	for left < right {
+		currentSum := array[left] + array[right]
+		if currentSum == target {
+			return []int{array[left], array[right]}
+		} else if currentSum < target {
+			left++
+		}
+		right--
 	}
 	return []int{}
 }
