@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	x := 10
@@ -34,4 +37,24 @@ func main() {
 		fmt.Println("color is NOT blue or red")
 	}
 
+	switch time.Now().Weekday() {
+	case time.Saturday, time.Sunday:
+		fmt.Println("It's the weekend.")
+	default:
+		fmt.Println("It's a weekday")
+	}
+
+	whatAmI := func(i interface{}) {
+		switch t := i.(type) {
+		case bool:
+			fmt.Println("I'm a bool")
+		case int:
+			fmt.Println("I'm an int")
+		default:
+			fmt.Printf("I'm of %T type \n", t)
+		}
+	}
+	whatAmI(true)
+	whatAmI(24)
+	whatAmI("hello")
 }
