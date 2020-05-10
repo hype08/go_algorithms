@@ -7,7 +7,7 @@ import (
 func main() {
 	// Arrays
 	// initialize an empty array.
-	var a [5]int
+	var a = make([]int, 3)
 	fmt.Println("empty", a)
 
 	// set array value by key.

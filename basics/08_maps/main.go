@@ -3,24 +3,25 @@ package main
 import "fmt"
 
 func main() {
-	// Define map
-	// emails := make(map[string]string)
+	// make an empty map of key string, value int.
+	m := make(map[string]int)
+	m["k1"] = 7
+	m["k2"] = 13
+	fmt.Println("map: ", m)
 
-	//  Assign kv
-	// emails["Bob"] = "bob@gmail.com"
-	// emails["Sharon"] = "sharon@gmail.com"
-	// emails["Mike"] = "mike@gmail.com"
+	value1 := m["k1"]
+	fmt.Println("value of k1: ", value1)
+	fmt.Println("length of m: ", len(m))
 
-	// Declare map and add kv
-	emails := map[string]string{"Bob": "bob@gmail.com", "Sharon": "sharon@gmail.com"}
+	// built-in delete
+	delete(m, "k2")
+	fmt.Println("m after deletion: ", m)
 
-	emails["Mike"] = "mike@gmail.com"
+	// if key is present
+	_, prs := m["k2"]
+	fmt.Println("prs:", prs)
 
-	fmt.Println(emails)
-	fmt.Println(len(emails))
-	fmt.Println(emails["Bob"])
-
-	// Delete from map
-	delete(emails, "Bob")
-	fmt.Println(emails)
+	// declare and init a new map in the same line.
+	n := map[string]int{"foo": 1, "bar": 2}
+	fmt.Println("n: ", n)
 }
