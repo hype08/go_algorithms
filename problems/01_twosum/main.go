@@ -33,8 +33,21 @@ func TwoNumberSum1(array []int, target int) []int {
 	return []int{}
 }
 
-// TwoNumberSum2 O(nlog(n)) time | O(1) space.
+// TwoNumberSum2 O(n) time | O(n) space
 func TwoNumberSum2(array []int, target int) []int {
+	nums := map[int]bool{}
+	for _, num := range array {
+		potentialMatch := target - num
+		if _, found := nums[potentialMatch]; found {
+			return []int{potentialMatch, num}
+		}
+		nums[num] = true
+	}
+	return []int{}
+}
+
+// TwoNumberSum3 O(nlog(n)) time | O(1) space.
+func TwoNumberSum3(array []int, target int) []int {
 	sort.Ints(array)
 	fmt.Println(array)
 	left, right := 0, len(array)-1
