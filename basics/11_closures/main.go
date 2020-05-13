@@ -2,17 +2,22 @@ package main
 
 import "fmt"
 
-func adder() func(int) int {
-	sum := 0
-	return func(x int) int {
-		sum += x
-		return sum
+func intSeq() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
 	}
 }
 
 func main() {
-	sum := adder()
-	for i := 0; i < 10; i++ {
-		fmt.Println(sum(i))
-	}
+
+	nextInt := intSeq()
+
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+
+	newInts := intSeq()
+	fmt.Println(newInts())
 }
