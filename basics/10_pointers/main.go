@@ -2,18 +2,23 @@ package main
 
 import "fmt"
 
+func zeroval(ival int) {
+	ival = 0
+}
+
+func zeroptr(iptr *int) {
+	*iptr = 0
+}
+
 func main() {
-	a := 5
-	b := &a
+	i := 1
+	fmt.Println("initial:", i)
 
-	fmt.Println(a, b)
-	fmt.Printf("%T\n", b)
+	zeroval(i)
+	fmt.Println("zeroval:", i)
 
-	//  Use * to read val from address
-	fmt.Println(*b)
-	fmt.Println(*&a)
+	zeroptr(&i)
+	fmt.Println("zeroptr:", i)
 
-	// Change val with pointer
-	*b = 10
-	fmt.Println(a)
+	fmt.Println("pointer:", &i)
 }
